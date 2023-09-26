@@ -1,0 +1,10 @@
+(set-logic QF_FF)
+(set-info :smt-lib-version 2.6)
+(set-info :category "crafted")
+(define-sort F () (_ FiniteField 5))
+(declare-const x F)
+(declare-const y F)
+(assert (= x y))
+(assert (not (= x y)))
+(check-sat)
+
