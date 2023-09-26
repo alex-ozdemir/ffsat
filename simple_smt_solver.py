@@ -106,10 +106,10 @@ class SimpleFfSolver:
             case ["set-logic", logic]:
                 or_unknown(logic == "QF_FF", "logic")
             case ["declare-fun", name, [], sort_name]:
-                assert sort_name in self.fields
+                or_unknown(sort_name in self.fields, f"bad sort {sort_name}")
                 self.field_vars.add(name)
             case ["declare-const", name, sort_name]:
-                assert sort_name in self.fields
+                or_unknown(sort_name in self.fields, f"bad sort {sort_name}")
                 self.field_vars.add(name)
             case ["assert", term]:
                 self.assertions.append(term)
