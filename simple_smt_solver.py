@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from eval.sp import sp_el
-from pprint import pprint
 import functools
 import re
 import operator
@@ -147,8 +146,6 @@ class SimpleFfSolver:
                 self.nz_polys.append(self.poly(assertion[1]))
             case ["=", a, b]:
                 self.zero_polys.append(self.poly(assertion))
-                pprint(assertion)
-                pprint(self.zero_polys[-1])
             case ["and", *args]:
                 for a in args:
                     self.flatten(a)
@@ -174,7 +171,6 @@ class SimpleFfSolver:
                 self.var_polys[INV_VAR] * functools.reduce(operator.mul, self.nz_polys)
                 + 1
             )
-        pprint(self.zero_polys)
         result = sp_el(self.poly_ring, self.zero_polys)
         if result is False:
             return Result.UNSAT
