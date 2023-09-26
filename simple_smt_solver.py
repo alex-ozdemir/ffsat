@@ -5,6 +5,7 @@ import functools
 import re
 import operator
 from sage.all import GF, PolynomialRing
+import string
 import sys
 from enum import StrEnum
 
@@ -81,7 +82,10 @@ def or_unknown(b, reason=""):
 
 
 def san_name(s: str) -> str:
-    return re.sub("[^a-zA-Z0-9_]", "", s)
+    s = re.sub("[^a-zA-Z0-9_]", "", s)
+    if s[0] not in string.ascii_letters:
+        s = "letstart" + s
+    return s
 
 
 class SimpleFfSolver:
