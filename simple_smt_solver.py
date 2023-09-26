@@ -9,6 +9,8 @@ import string
 import sys
 from enum import StrEnum
 
+sys.setrecursionlimit(10000)
+
 
 class Result(StrEnum):
     SAT = "sat"
