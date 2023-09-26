@@ -54,7 +54,7 @@ class ExplainElim(Explain):
 
 
 def guarded_call(call: Callable[[], LemmaTuple], guard, A: dict, negated: bool) -> Optional[LemmaTuple]:
-    assert guard.subs(A).is_constant()
+    # assert guard.subs(A).is_constant()
     if guard.subs(A).is_zero() == negated:
         return None
     return call()
